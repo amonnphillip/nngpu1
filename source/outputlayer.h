@@ -5,7 +5,7 @@
 
 struct OutputNode
 {
-	double output;
+	// Output nodes do not have any internal data
 };
 
 class OutputLayer : public Layer<OutputNode, double, double, double>, public INNetworkLayer

@@ -40,7 +40,7 @@ void InputLayer::Backward(double* input, int inputSize, double learnRate)
 
 void InputLayer::Backward(INNetworkLayer* previousLayer, INNetworkLayer* nextLayer, double learnRate)
 {
-	
+	throw LayerException("Backward variant not valid for InputLayer layer");
 }
 
 double* InputLayer::GetForward()

@@ -65,5 +65,8 @@ double* NNetwork::GetLayerBackward(int layerIndex)
 
 void NNetwork::Dispose()
 {
-
+	while (!layers.empty())
+	{
+		layers.pop_back();
+	}
 }

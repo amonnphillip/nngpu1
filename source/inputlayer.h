@@ -5,6 +5,7 @@
 
 struct InputNode
 {
+	// Input nodes do not have any internal data
 };
 
 class InputLayer : public Layer<InputNode, double, double, double>, public INNetworkLayer

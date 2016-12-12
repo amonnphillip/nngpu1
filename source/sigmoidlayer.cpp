@@ -18,29 +18,18 @@ SigmoidLayer::SigmoidLayer(int dimentionx, int dimentiony, int dimentionz)
 		nodeCount,
 		true);
 
-	// TODO: MOVE THIS SOME PLACE ELSE!!!!
 	SigmoidNode* hnodes = nodeHostMem.get();
 	for (int index = 0; index < nodeCount; index++)
 	{
 		hnodes->weightCount = 2;
-		hnodes->weights[0] = 1;
+		hnodes->weights[0] = 1; // We make the assumtion here that the previous layer has 2 nodes
 		hnodes->weights[1] = 1;
 		hnodes++;
 	}
 
-	double* fout = forwardHostMem.get();
-	for (int index = 0; index < nodeCount; index++)
-	{
-		*fout = 0;
-		fout++;
-	}
+	std::memset(forwardHostMem.get(), 0, nodeCount * sizeof(double));
 
-	double* bout = backwardHostMem.get();
-	for (int index = 0; index < nodeCount; index++)
-	{
-		*bout = 0;
-		bout++;
-	}
+	std::memset(backwardHostMem.get(), 0, nodeCount * sizeof(double));
 
 	if (cudaMemcpy(nodeDeviceMem, nodeHostMem.get(), nodeCount * sizeof(SigmoidNode), cudaMemcpyHostToDevice) != cudaError::cudaSuccess)
 	{
@@ -51,7 +40,6 @@ SigmoidLayer::SigmoidLayer(int dimentionx, int dimentiony, int dimentionz)
 	{
 		throw std::runtime_error("Sigmoid cudaMemcpy returned an error");
 	}
-
 }
 
 void SigmoidLayer::Dispose()

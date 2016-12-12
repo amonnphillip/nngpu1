@@ -18,7 +18,7 @@ int main()
 	nn->Add<OutputLayer>(2, 1, 1);
 
 	// Train the network
-	int interations = 10000;
+	int interations = 20000;
 	while (interations > 0)
 	{
 		double input[] = { 1, 1 };
@@ -27,7 +27,7 @@ int main()
 		double* nnoutput = nn->GetLayerForward(1);
 
 		double expected[] = { 1, 0 };
-		nn->Backward(expected, 2, 0.1);
+		nn->Backward(expected, 2, 0.2);
 
 
 		std::cout << "output:\r\n";

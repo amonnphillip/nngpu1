@@ -12,7 +12,7 @@ struct SigmoidNode
 
 class SigmoidLayer : public Layer<SigmoidNode, double, double, double>, public INNetworkLayer
 {
-public:
+private:
 	int nodeCount = 0;
 	int forwardCount = 0;
 	int backwardCount = 0;

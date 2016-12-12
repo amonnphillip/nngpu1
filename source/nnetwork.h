@@ -9,11 +9,6 @@ private:
 	std::vector<INNetworkLayer*> layers;
 
 public:
-	template<class T>
-	void NNetwork::AddLayer(int dimentionx, int dimentiony, int dimentionz)
-	{
-		Add<T>(dimentionx, dimentiony, dimentionz);
-	}
 	template<class layertype> 
 	void Add(int dimentionx, int dimentiony, int dimentionz)
 	{
